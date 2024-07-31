@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">memebrship_app</string>
+    <string name="facebook_app_id">1139289690392329</string>
+    <string name="fb_login_protocol_scheme">fb1139289690392329</string>
+    <string name="facebook_client_token">cbadf9e76eb787723d276c5907f3d682</string>
+</resources>

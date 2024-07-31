@@ -4,17 +4,16 @@
 <dict>
  	<key>aps-environment</key>
     <string>production</string>
-    <string>production</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-	<dict>
-	<key>CFBundleURLSchemes</key>
-	<key>CFBundleURLSchemes</key>
-	<array>
-		<string>fb1139289690392329</string>
-	</array>
-	</dict>
-	</array>
+
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb1139289690392329</string>
+            </array>
+        </dict>
+    </array>
 	<key>FacebookAppID</key>
 	<string>1139289690392329</string>
 	<key>FacebookClientToken</key>

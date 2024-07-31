@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITSAppUsesNonExemptEncryption</key>  
+	<false/>
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
@@ -11,14 +13,6 @@
             </array>
         </dict>
     </array>
-	<key>ITSAppUsesNonExemptEncryption</key>  
-	<false/>
-	<key>FacebookAppID</key>
-	<string>1139289690392329</string>
-	<key>FacebookClientToken</key>
-	<string>cbadf9e76eb787723d276c5907f3d682</string>
-	<key>FacebookDisplayName</key>
-	<string>memebrship_app</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>choose image in gallary </string>
 	<key>NSCameraUsageDescription</key>

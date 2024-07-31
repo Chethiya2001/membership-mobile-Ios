@@ -2,7 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	
+		<key>aps-environment</key>
+    <string>production</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 	<dict>
@@ -12,8 +13,6 @@
 	</array>
 	</dict>
 	</array>
-	<key>aps-environment</key>
-	<string>production</string>
 	<key>FacebookAppID</key>
 	<string>1139289690392329</string>
 	<key>FacebookClientToken</key>

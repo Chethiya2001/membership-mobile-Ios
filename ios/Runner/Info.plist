@@ -12,6 +12,8 @@
 	</array>
 	</dict>
 	</array>
+	<key>aps-environment</key>
+	<string>production</string>
 	<key>FacebookAppID</key>
 	<string>1139289690392329</string>
 	<key>FacebookClientToken</key>
@@ -20,6 +22,8 @@
 	<string>memebrship_app</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>choose image in gallary </string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to take photos for your profile.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

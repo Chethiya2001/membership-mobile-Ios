@@ -4,7 +4,6 @@
 <dict>
  	<key>aps-environment</key>
     <string>production</string>
-		<key>aps-environment</key>
     <string>production</string>
 	<key>CFBundleURLTypes</key>
 	<array>

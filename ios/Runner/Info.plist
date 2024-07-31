@@ -11,6 +11,8 @@
             </array>
         </dict>
     </array>
+	<key>ITSAppUsesNonExemptEncryption</key>  
+	<false/>
 	<key>FacebookAppID</key>
 	<string>1139289690392329</string>
 	<key>FacebookClientToken</key>

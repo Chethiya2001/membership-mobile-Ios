@@ -6,6 +6,7 @@ import 'package:mobile_app/constant/base_api.dart';
 import 'package:mobile_app/constant/colors/main_colors.dart';
 import 'package:mobile_app/features/membership/auth/model/auth_model.dart';
 import 'package:mobile_app/features/membership/auth/provider/country.dart';
+import 'package:mobile_app/features/membership/auth/screen/TearmsFile_Ui.dart';
 import 'package:mobile_app/features/membership/auth/screen/login_auth.dart';
 import 'package:mobile_app/features/membership/tearms&condition/screens/main_tearms_and_condition_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -300,7 +301,7 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
       body: Stack(
         children: [
           Container(
-            color: maingbg,
+            color: newKMainColor,
             width: double.infinity,
             height: double.infinity,
           ),
@@ -310,15 +311,7 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [homeclr, maingbg],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.5, 0.9],
-                  tileMode: TileMode.decal,
-                ),
-              ),
+              color: newKMainColor,
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -741,8 +734,10 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
                                                     child: Center(
                                                       child: Text(
                                                         country['label_eng']
-                                                            .toString(),style: TextStyle(color: Colors.white),
-                                                            
+                                                            .toString(),
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
                                                         textAlign:
                                                             TextAlign.center,
                                                       ),
@@ -788,6 +783,8 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
                                   child: Row(
                                     children: [
                                       Checkbox(
+                                        activeColor: Colors.white,
+                                        checkColor: Colors.black,
                                         value: checkboxValue == '1',
                                         onChanged: (bool? value) {
                                           setState(() {
@@ -796,10 +793,10 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
                                         },
                                       ),
                                       const Text(
-                                        'I agree to the privacy policy',
+                                        'I agree to the privacy policy ',
                                         style: TextStyle(
                                             fontSize: 12.0,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w400,
                                             color: Colors.white60),
                                       ),
                                       const SizedBox(
@@ -810,7 +807,7 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (ctx) =>
-                                                      const TearmsAndConditionScreen()));
+                                                      const TearmsFile()));
                                           print('privecy policy clicked');
                                         },
                                         child: const Text(

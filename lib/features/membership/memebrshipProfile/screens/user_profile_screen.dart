@@ -9,6 +9,7 @@ import 'package:mobile_app/constant/colors/main_colors.dart';
 import 'package:mobile_app/constant/shapes/memebrship_shape.dart';
 import 'package:mobile_app/features/membership/auth/provider/country.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_app/features/membership/auth/screen/login_auth.dart';
 import 'package:mobile_app/features/membership/auth/services/login_token_service.dart';
 import 'package:mobile_app/features/membership/home/screen/home_screen.dart';
 import 'package:mobile_app/features/membership/memebrshipProfile/models/user_model.dart';
@@ -79,6 +80,44 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
       setState(() {
         _selectedBackgroundImage = File(pickedImage.path);
       });
+    }
+  }
+  //delete profile
+
+  Future<bool> deleteProfile() async {
+    try {
+      final token = await AuthManager.getToken();
+      if (token == null) {
+        return false;
+      }
+
+      const String apiBaseUrl = ApiConstants.baseUrl;
+
+      const String apiEndpoint = '$apiBaseUrl/membership/profile/delete';
+
+      final response = await http.get(Uri.parse(apiEndpoint), headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      });
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+        print(data);
+        _successMsg("Account Delete Successfully");
+        if (mounted) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => LoginAuthScreen(),
+          ));
+        }
+      } else {
+        print(response.body);
+        _showErrorDialog("Something went wrong. Please try again later.");
+      }
+
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
     }
   }
 
@@ -527,7 +566,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: screenHeight * 1.6,
+                  height: screenHeight * 1.7,
                 )
               ],
             ),
@@ -597,7 +636,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal)),
                                     items: titleList
                                         .map<DropdownMenuItem<String>>((title) {
@@ -664,7 +703,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                           labelStyle: TextStyle(
                                               fontSize: 16,
                                               fontFamily: 'Poppins',
-                                              color: Colors.black38,
+                                              color: Colors.black,
                                               fontWeight: FontWeight.normal)),
                                       style: TextStyle(
                                           fontSize: screenWidth * 0.040,
@@ -714,7 +753,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                         labelStyle: TextStyle(
                                             fontSize: screenWidth * 0.040,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: const TextStyle(
@@ -758,7 +797,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: screenWidth * 0.040,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: const TextStyle(
@@ -799,7 +838,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -844,7 +883,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                         contentPadding:
                                             EdgeInsets.only(left: 20),
@@ -948,7 +987,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                                 labelStyle: TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: 'Poppins',
-                                                    color: Colors.black38,
+                                                    color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.normal),
                                                 contentPadding:
@@ -1019,7 +1058,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                               contentPadding:
                                   EdgeInsets.only(left: 20, top: 5, bottom: 5),
@@ -1087,7 +1126,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1156,7 +1195,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1215,7 +1254,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1285,7 +1324,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1322,7 +1361,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             dropdownColor: Colors.white,
@@ -1411,7 +1450,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1479,7 +1518,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1518,7 +1557,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1551,7 +1590,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1590,7 +1629,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: TextStyle(
@@ -1641,7 +1680,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: TextStyle(
@@ -1696,7 +1735,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: TextStyle(
@@ -1772,7 +1811,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                                 labelStyle: TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: 'Poppins',
-                                                    color: Colors.black38,
+                                                    color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.normal),
                                               ),
@@ -1871,7 +1910,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1938,7 +1977,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1977,7 +2016,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -2005,6 +2044,30 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                             onPressed: updateData,
                             child: const Text(
                               'Update',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          height: 60,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                minimumSize: const Size(
+                                  double.infinity,
+                                  50,
+                                )),
+                            onPressed: deleteProfile,
+                            child: const Text(
+                              'Delete Profile',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,

@@ -80,19 +80,10 @@ class _LoginAuthScreenState extends State<LoginAuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: newKMainColor,
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [homeclr, maingbg],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.5, 0.9],
-            tileMode: TileMode.decal,
-          ),
-        ),
         child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: 40),
@@ -316,8 +307,8 @@ class _LoginAuthScreenState extends State<LoginAuthScreen> {
                                 children: [
                                   GestureDetector(
                                     onTap: handleSignIn,
-                                    child: SvgPicture.asset(
-                                      'assets/images/logo/google_logo.svg',
+                                    child: Image.asset(
+                                      'assets/images/icons8-google-48.png',
                                       width: 50,
                                       height: 50,
                                     ),

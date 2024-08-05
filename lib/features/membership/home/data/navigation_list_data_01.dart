@@ -3,7 +3,7 @@ import 'package:mobile_app/features/membership/home/models/navigation_list_model
 final List<MenuItemOne> menuItems = [
   MenuItemOne(
       name: 'Edit Profile',
-      svgPath: 'assets/svg_list_draver/Group (1).svg',
+      svgPath: 'assets/svg_list_draver/memebrship.svg',
       route: '/editProfile'),
   MenuItemOne(
       name: 'Membership',

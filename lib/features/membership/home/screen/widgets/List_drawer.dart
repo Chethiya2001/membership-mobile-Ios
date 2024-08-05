@@ -451,7 +451,6 @@ class _ListDrawerState extends State<ListDrawer> {
                               color: Colors.white,
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Adamina',
                             ),
                           ),
                         ),
@@ -639,7 +638,7 @@ class _ListDrawerState extends State<ListDrawer> {
                       height: 33,
                     ),
                     SizedBox(
-                      height: 230,
+                      height: screenHeight * 0.27,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 0, 8, 2),
                         child: Column(
@@ -765,26 +764,7 @@ class _ListDrawerState extends State<ListDrawer> {
                 ),
               ),
             ),
-            Positioned(
-              bottom: 45,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
-              child: SizedBox(
-                width: 300,
-                height: 50,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStateProperty.all<Color>(newKMainColor),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "Renew",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+
             //Curcles Blue
             Positioned(
               top: 300,

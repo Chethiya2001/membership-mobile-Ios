@@ -587,7 +587,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal)),
                                     items: titleList
                                         .map<DropdownMenuItem<String>>((title) {
@@ -654,7 +654,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                           labelStyle: TextStyle(
                                               fontSize: 16,
                                               fontFamily: 'Poppins',
-                                              color: Colors.black38,
+                                              color: Colors.black,
                                               fontWeight: FontWeight.normal)),
                                       style: TextStyle(
                                           fontSize: screenWidth * 0.040,
@@ -704,7 +704,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                         labelStyle: TextStyle(
                                             fontSize: screenWidth * 0.040,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: const TextStyle(
@@ -748,7 +748,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: screenWidth * 0.040,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: const TextStyle(
@@ -789,7 +789,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -834,7 +834,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                         contentPadding:
                                             EdgeInsets.only(left: 20),
@@ -938,7 +938,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                                 labelStyle: TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: 'Poppins',
-                                                    color: Colors.black38,
+                                                    color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.normal),
                                                 contentPadding:
@@ -1009,7 +1009,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                               contentPadding:
                                   EdgeInsets.only(left: 20, top: 5, bottom: 5),
@@ -1077,7 +1077,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1146,7 +1146,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1205,7 +1205,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1275,7 +1275,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1312,7 +1312,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             dropdownColor: Colors.white,
@@ -1401,7 +1401,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1469,7 +1469,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1508,7 +1508,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1541,7 +1541,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1580,7 +1580,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: TextStyle(
@@ -1631,7 +1631,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: TextStyle(
@@ -1686,7 +1686,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                         labelStyle: TextStyle(
                                             fontSize: 16,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black38,
+                                            color: Colors.black,
                                             fontWeight: FontWeight.normal),
                                       ),
                                       style: TextStyle(
@@ -1762,7 +1762,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                                 labelStyle: TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: 'Poppins',
-                                                    color: Colors.black38,
+                                                    color: Colors.black,
                                                     fontWeight:
                                                         FontWeight.normal),
                                               ),
@@ -1861,7 +1861,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                       labelStyle: TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Poppins',
-                                          color: Colors.black38,
+                                          color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
                                     dropdownColor: Colors.white,
@@ -1928,7 +1928,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(
@@ -1967,7 +1967,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                               labelStyle: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
-                                  color: Colors.black38,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.normal),
                             ),
                             style: TextStyle(

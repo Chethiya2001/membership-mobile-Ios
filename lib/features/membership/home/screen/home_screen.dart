@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/constant/colors/main_colors.dart';
 import 'package:mobile_app/features/membership/auth/services/login_token_service.dart';
@@ -11,7 +11,7 @@ import 'package:mobile_app/features/membership/home/screen/widgets/list_drawer.d
 import 'package:mobile_app/features/membership/memebrshipProfile/screens/user_profile_screen.dart';
 import 'package:mobile_app/features/membership/tearms&condition/screens/main_tearms_and_condition_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -292,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          // Positioned to White part of the widget
+
         ),
       ),
     );

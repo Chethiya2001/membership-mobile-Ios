@@ -73,15 +73,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: newKBgColor,
+      appBar: AppBar(
+        titleSpacing: 20,
+        backgroundColor: newKMainColor,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset('assets/images/restPassword.jpg',
                       alignment: Alignment.topCenter),
@@ -91,8 +105,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 height: 30,
               ),
               const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
                     children: [
@@ -114,7 +126,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       Padding(padding: EdgeInsets.all(13)),
                       Text(
                         "Don’t worry! It happens. Please enter the email Address we will send \nthe email to reset password.",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 11, color: Colors.black),
                       ),
                     ],
                   ),
@@ -126,8 +138,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               // button
               SizedBox(
                 child: Container(
-                  width: 320,
-                  height: 70,
+                  width: screenWidth * 0.88,
+                  height: screenHeight * 0.08,
                   decoration: BoxDecoration(
                     color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(9.0),
@@ -179,10 +191,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   ElevatedButton(
                     onPressed: _handleButtonPress,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withOpacity(0.7),
+                      backgroundColor: newKMainColor,
                       minimumSize: const Size(360, 70),
                     ),
                     child: const Text(
@@ -195,25 +204,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   ),
                   const SizedBox(
                     height: 5,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context)
-                          .colorScheme
-                          .surface
-                          .withOpacity(0.7),
-                      minimumSize: const Size(360, 70),
-                    ),
-                    child: Text(
-                      'Back',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontSize: 15,
-                      ),
-                    ),
                   ),
                 ],
               ),

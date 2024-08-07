@@ -503,9 +503,9 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                       const Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(16, 60, 0, 2),
+                            padding: EdgeInsets.fromLTRB(18, 16, 8, 8),
                             child: Text(
-                              "Stage 01",
+                              "Registration Stage",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 26,
@@ -520,14 +520,14 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                   ),
                 ),
                 SizedBox(
-                  height: screenHeight * 1.5,
+                  height: screenHeight * 1.44,
                 )
               ],
             ),
             Positioned(
-              top: 220,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              top: screenHeight * 0.18,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: Form(
                 key: userKey,
                 child: Container(
@@ -550,78 +550,84 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           height: 60,
-                          child: Consumer(
-                            builder: (context, ref, child) {
-                              final titleAsyncValue = ref.watch(titleProvider);
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Consumer(
+                              builder: (context, ref, child) {
+                                final titleAsyncValue =
+                                    ref.watch(titleProvider);
 
-                              return titleAsyncValue.when(
-                                data: (titleList) {
-                                  print('title Data: $titleList');
-                                  if (titleList.isEmpty) {
-                                    selectedtitle = '';
-                                  } else {
-                                    if (!titleList.any((title) =>
-                                        title['id'].toString() ==
-                                        selectedtitle)) {
-                                      selectedtitle =
-                                          titleList.first['id'].toString();
-                                    }
-                                  }
-
-                                  return DropdownButtonFormField<String>(
-                                    value: selectedtitle,
-                                    dropdownColor: Colors.white,
-                                    style: TextStyle(
-                                        fontSize: screenWidth * 0.040,
-                                        fontFamily: 'Poppins',
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500),
-                                    decoration: const InputDecoration(
-                                        contentPadding:
-                                            EdgeInsets.only(left: 20),
-                                        border: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        labelText: "Title",
-                                        fillColor: Colors.white,
-                                        labelStyle: TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: 'Poppins',
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal)),
-                                    items: titleList
-                                        .map<DropdownMenuItem<String>>((title) {
-                                      return DropdownMenuItem<String>(
-                                        value: title['id'].toString(),
-                                        child: Text(
-                                          title['label_eng'].toString(),
-                                          style: const TextStyle(
-                                              color: Colors.black),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        selectedtitle = value;
-                                      });
-                                    },
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please select a title.';
+                                return titleAsyncValue.when(
+                                  data: (titleList) {
+                                    print('title Data: $titleList');
+                                    if (titleList.isEmpty) {
+                                      selectedtitle = '';
+                                    } else {
+                                      if (!titleList.any((title) =>
+                                          title['id'].toString() ==
+                                          selectedtitle)) {
+                                        selectedtitle =
+                                            titleList.first['id'].toString();
                                       }
-                                      return null;
-                                    },
-                                  );
-                                },
-                                loading: () {
-                                  return const CircularProgressIndicator();
-                                },
-                                error: (error, stack) {
-                                  return Text(
-                                      'Error loading country data: $error');
-                                },
-                              );
-                            },
+                                    }
+
+                                    return DropdownButtonFormField<String>(
+                                      value: selectedtitle,
+                                      dropdownColor: Colors.white,
+                                      style: TextStyle(
+                                          fontSize: screenWidth * 0.040,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.w500),
+                                      decoration: const InputDecoration(
+                                          contentPadding:
+                                              EdgeInsets.only(left: 20),
+                                          border: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          labelText: "Title",
+                                          fillColor: Colors.white,
+                                          labelStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: 'Poppins',
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.normal)),
+                                      items: titleList
+                                          .map<DropdownMenuItem<String>>(
+                                              (title) {
+                                        return DropdownMenuItem<String>(
+                                          value: title['id'].toString(),
+                                          child: Text(
+                                            title['label_eng'].toString(),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedtitle = value;
+                                        });
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please select a title.';
+                                        }
+                                        return null;
+                                      },
+                                    );
+                                  },
+                                  loading: () {
+                                    return const CircularProgressIndicator();
+                                  },
+                                  error: (error, stack) {
+                                    return Text(
+                                        'Error loading country data: $error');
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -827,58 +833,61 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     height: 60,
-                                    child: DropdownButtonFormField<String>(
-                                      decoration: const InputDecoration(
-                                        labelText: "Gender",
-                                        fillColor: Colors.white,
-                                        labelStyle: TextStyle(
-                                            fontSize: 16,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 6),
+                                      child: DropdownButtonFormField<String>(
+                                        decoration: const InputDecoration(
+                                          labelText: "Gender",
+                                          fillColor: Colors.white,
+                                          labelStyle: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: 'Poppins',
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.normal),
+                                          contentPadding:
+                                              EdgeInsets.only(left: 20),
+                                          border: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                        ),
+                                        dropdownColor: Colors.white,
+                                        style: TextStyle(
+                                            fontSize: 12,
                                             fontFamily: 'Poppins',
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal),
-                                        contentPadding:
-                                            EdgeInsets.only(left: 20),
-                                        border: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
+                                            color: Colors.black87,
+                                            fontWeight: FontWeight.w500),
+                                        items: const [
+                                          DropdownMenuItem<String>(
+                                            value:
+                                                'M', // Update value to 'M' for Male
+                                            child: Text(
+                                              'Male',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                          DropdownMenuItem<String>(
+                                            value:
+                                                'F', // Update value to 'F' for Female
+                                            child: Text(
+                                              'Female',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ],
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedGender = value;
+                                          });
+                                        },
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please select a gender.';
+                                          }
+                                          return null;
+                                        },
                                       ),
-                                      dropdownColor: Colors.white,
-                                      style: TextStyle(
-                                          fontSize: screenWidth * 0.040,
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black87,
-                                          fontWeight: FontWeight.w500),
-                                      items: const [
-                                        DropdownMenuItem<String>(
-                                          value:
-                                              'M', // Update value to 'M' for Male
-                                          child: Text(
-                                            'Male',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          ),
-                                        ),
-                                        DropdownMenuItem<String>(
-                                          value:
-                                              'F', // Update value to 'F' for Female
-                                          child: Text(
-                                            'Female',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          selectedGender = value;
-                                        });
-                                      },
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please select a gender.';
-                                        }
-                                        return null;
-                                      },
                                     ),
                                   ),
                                 ],
@@ -1040,88 +1049,95 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           height: 60,
-                          child: Consumer(
-                            builder: (context, ref, child) {
-                              final jobCatergoryAsyncValue =
-                                  ref.watch(jobCatergoryProvider);
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Consumer(
+                              builder: (context, ref, child) {
+                                final jobCatergoryAsyncValue =
+                                    ref.watch(jobCatergoryProvider);
 
-                              return jobCatergoryAsyncValue.when(
-                                data: (jobCatergoryList) {
-                                  print(
-                                      'gob catergotry Type Data: $jobCatergoryList');
+                                return jobCatergoryAsyncValue.when(
+                                  data: (jobCatergoryList) {
+                                    print(
+                                        'gob catergotry Type Data: $jobCatergoryList');
 
-                                  if (jobCatergoryList.isEmpty) {
-                                    selectedjobCatergory = '';
-                                  } else {
-                                    selectedjobCatergory ??=
-                                        jobCatergoryList.first['id'].toString();
-
-                                    if (!jobCatergoryList.any((jobCatergory) =>
-                                        jobCatergory['id'].toString() ==
-                                        selectedjobCatergory)) {
-                                      selectedjobCatergory = jobCatergoryList
+                                    if (jobCatergoryList.isEmpty) {
+                                      selectedjobCatergory = '';
+                                    } else {
+                                      selectedjobCatergory ??= jobCatergoryList
                                           .first['id']
                                           .toString();
-                                    }
-                                  }
 
-                                  return DropdownButtonFormField<String>(
-                                    value: selectedjobCatergory,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.only(left: 20),
-                                      border: InputBorder.none,
-                                      enabledBorder: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                      labelText: "Job Catergory",
-                                      fillColor: Colors.white,
-                                      labelStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                    dropdownColor: Colors.white,
-                                    isExpanded: true,
-                                    style: TextStyle(
-                                        fontSize: screenWidth * 0.040,
-                                        fontFamily: 'Poppins',
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500),
-                                    items: jobCatergoryList
-                                        .map<DropdownMenuItem<String>>(
-                                            (jobCatergory) {
-                                      return DropdownMenuItem<String>(
-                                        value: jobCatergory['id'].toString(),
-                                        child: Text(
-                                          jobCatergory['label_eng'].toString(),
-                                          style: const TextStyle(
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        selectedjobCatergory = value!;
-                                      });
-                                    },
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please select a Job Catergory.';
+                                      if (!jobCatergoryList.any(
+                                          (jobCatergory) =>
+                                              jobCatergory['id'].toString() ==
+                                              selectedjobCatergory)) {
+                                        selectedjobCatergory = jobCatergoryList
+                                            .first['id']
+                                            .toString();
                                       }
-                                      return null;
-                                    },
-                                  );
-                                },
-                                loading: () {
-                                  return const CircularProgressIndicator();
-                                },
-                                error: (error, stack) {
-                                  return Text(
-                                      'Error loading job catergory data: $error');
-                                },
-                              );
-                            },
+                                    }
+
+                                    return DropdownButtonFormField<String>(
+                                      value: selectedjobCatergory,
+                                      decoration: const InputDecoration(
+                                        contentPadding:
+                                            EdgeInsets.only(left: 20),
+                                        border: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        labelText: "Job Catergory",
+                                        fillColor: Colors.white,
+                                        labelStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      dropdownColor: Colors.white,
+                                      isExpanded: true,
+                                      style: TextStyle(
+                                          fontSize: screenWidth * 0.040,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.w500),
+                                      items: jobCatergoryList
+                                          .map<DropdownMenuItem<String>>(
+                                              (jobCatergory) {
+                                        return DropdownMenuItem<String>(
+                                          value: jobCatergory['id'].toString(),
+                                          child: Text(
+                                            jobCatergory['label_eng']
+                                                .toString(),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedjobCatergory = value!;
+                                        });
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please select a Job Catergory.';
+                                        }
+                                        return null;
+                                      },
+                                    );
+                                  },
+                                  loading: () {
+                                    return const CircularProgressIndicator();
+                                  },
+                                  error: (error, stack) {
+                                    return Text(
+                                        'Error loading job catergory data: $error');
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -1172,83 +1188,88 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           height: 60,
-                          child: Consumer(
-                            builder: (context, ref, child) {
-                              final institutionAsyncValue =
-                                  ref.watch(institutionProvider);
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Consumer(
+                              builder: (context, ref, child) {
+                                final institutionAsyncValue =
+                                    ref.watch(institutionProvider);
 
-                              return institutionAsyncValue.when(
-                                data: (institutionList) {
-                                  print(
-                                      'Institution Type Data: $institutionList');
-                                  if (institutionList.isEmpty) {
-                                    selectedInstitutionType = '';
-                                  } else {
-                                    if (!institutionList.any((institution) =>
-                                        institution['id'].toString() ==
-                                        selectedInstitutionType)) {
-                                      selectedInstitutionType = institutionList
-                                          .first['id']
-                                          .toString();
-                                    }
-                                  }
-
-                                  return DropdownButtonFormField<String>(
-                                    value: selectedInstitutionType,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.only(left: 20),
-                                      border: InputBorder.none,
-                                      enabledBorder: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                      labelText: "Instituiton Type",
-                                      fillColor: Colors.white,
-                                      labelStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                    dropdownColor: Colors.white,
-                                    isExpanded: true,
-                                    style: TextStyle(
-                                        fontSize: screenWidth * 0.040,
-                                        fontFamily: 'Poppins',
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500),
-                                    items: institutionList
-                                        .map<DropdownMenuItem<String>>(
-                                            (institution) {
-                                      return DropdownMenuItem<String>(
-                                        value: institution['id'].toString(),
-                                        child: Text(
-                                          institution['label_eng'].toString(),
-                                          style: const TextStyle(
-                                              color: Colors.black),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        selectedInstitutionType = value;
-                                      });
-                                    },
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please select a Instituiton Type.';
+                                return institutionAsyncValue.when(
+                                  data: (institutionList) {
+                                    print(
+                                        'Institution Type Data: $institutionList');
+                                    if (institutionList.isEmpty) {
+                                      selectedInstitutionType = '';
+                                    } else {
+                                      if (!institutionList.any((institution) =>
+                                          institution['id'].toString() ==
+                                          selectedInstitutionType)) {
+                                        selectedInstitutionType =
+                                            institutionList.first['id']
+                                                .toString();
                                       }
-                                      return null;
-                                    },
-                                  );
-                                },
-                                loading: () {
-                                  return const CircularProgressIndicator();
-                                },
-                                error: (error, stack) {
-                                  return Text(
-                                      'Error loading Institution data: $error');
-                                },
-                              );
-                            },
+                                    }
+
+                                    return DropdownButtonFormField<String>(
+                                      value: selectedInstitutionType,
+                                      decoration: const InputDecoration(
+                                        contentPadding:
+                                            EdgeInsets.only(left: 20),
+                                        border: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        labelText: "Instituiton Type",
+                                        fillColor: Colors.white,
+                                        labelStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      dropdownColor: Colors.white,
+                                      isExpanded: true,
+                                      style: TextStyle(
+                                          fontSize: screenWidth * 0.040,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.w500),
+                                      items: institutionList
+                                          .map<DropdownMenuItem<String>>(
+                                              (institution) {
+                                        return DropdownMenuItem<String>(
+                                          value: institution['id'].toString(),
+                                          child: Text(
+                                            institution['label_eng'].toString(),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedInstitutionType = value;
+                                        });
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please select a Instituiton Type.';
+                                        }
+                                        return null;
+                                      },
+                                    );
+                                  },
+                                  loading: () {
+                                    return const CircularProgressIndicator();
+                                  },
+                                  error: (error, stack) {
+                                    return Text(
+                                        'Error loading Institution data: $error');
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -1367,84 +1388,90 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           height: 60,
-                          child: Consumer(
-                            builder: (context, ref, child) {
-                              final qualificationAsyncValue =
-                                  ref.watch(qualificationProvider);
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Consumer(
+                              builder: (context, ref, child) {
+                                final qualificationAsyncValue =
+                                    ref.watch(qualificationProvider);
 
-                              return qualificationAsyncValue.when(
-                                data: (qualificationList) {
-                                  print(
-                                      'qualification Type Data: $qualificationList');
-                                  if (qualificationList.isEmpty) {
-                                    selectedqualification = '';
-                                  } else {
-                                    if (!qualificationList.any(
-                                        (qualification) =>
-                                            qualification['id'].toString() ==
-                                            selectedqualification)) {
-                                      selectedqualification = qualificationList
-                                          .first['id']
-                                          .toString();
-                                    }
-                                  }
-
-                                  return DropdownButtonFormField<String>(
-                                    value: selectedqualification,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.only(left: 20),
-                                      border: InputBorder.none,
-                                      enabledBorder: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                      labelText: "Qualification",
-                                      fillColor: Colors.white,
-                                      labelStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                    dropdownColor: Colors.white,
-                                    isExpanded: true,
-                                    style: TextStyle(
-                                        fontSize: screenWidth * 0.040,
-                                        fontFamily: 'Poppins',
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500),
-                                    items: qualificationList
-                                        .map<DropdownMenuItem<String>>(
-                                            (qualification) {
-                                      return DropdownMenuItem<String>(
-                                        value: qualification['id'].toString(),
-                                        child: Text(
-                                          qualification['label_eng'].toString(),
-                                          style: const TextStyle(
-                                              color: Colors.black),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        selectedqualification = value;
-                                      });
-                                    },
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please select a qualification.';
+                                return qualificationAsyncValue.when(
+                                  data: (qualificationList) {
+                                    print(
+                                        'qualification Type Data: $qualificationList');
+                                    if (qualificationList.isEmpty) {
+                                      selectedqualification = '';
+                                    } else {
+                                      if (!qualificationList.any(
+                                          (qualification) =>
+                                              qualification['id'].toString() ==
+                                              selectedqualification)) {
+                                        selectedqualification =
+                                            qualificationList.first['id']
+                                                .toString();
                                       }
-                                      return null;
-                                    },
-                                  );
-                                },
-                                loading: () {
-                                  return const CircularProgressIndicator();
-                                },
-                                error: (error, stack) {
-                                  return Text(
-                                      'Error loading Qualification data: $error');
-                                },
-                              );
-                            },
+                                    }
+
+                                    return DropdownButtonFormField<String>(
+                                      value: selectedqualification,
+                                      decoration: const InputDecoration(
+                                        contentPadding:
+                                            EdgeInsets.only(left: 20),
+                                        border: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        labelText: "Qualification",
+                                        fillColor: Colors.white,
+                                        labelStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      dropdownColor: Colors.white,
+                                      isExpanded: true,
+                                      style: TextStyle(
+                                          fontSize: screenWidth * 0.040,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.w500),
+                                      items: qualificationList
+                                          .map<DropdownMenuItem<String>>(
+                                              (qualification) {
+                                        return DropdownMenuItem<String>(
+                                          value: qualification['id'].toString(),
+                                          child: Text(
+                                            qualification['label_eng']
+                                                .toString(),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedqualification = value;
+                                        });
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please select a qualification.';
+                                        }
+                                        return null;
+                                      },
+                                    );
+                                  },
+                                  loading: () {
+                                    return const CircularProgressIndicator();
+                                  },
+                                  error: (error, stack) {
+                                    return Text(
+                                        'Error loading Qualification data: $error');
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -1724,93 +1751,101 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     height: 60,
-                                    child: Consumer(
-                                      builder: (context, ref, child) {
-                                        final nationalityAsyncValue =
-                                            ref.watch(nationalityProvider);
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 6),
+                                      child: Consumer(
+                                        builder: (context, ref, child) {
+                                          final nationalityAsyncValue =
+                                              ref.watch(nationalityProvider);
 
-                                        return nationalityAsyncValue.when(
-                                          data: (nationalityList) {
-                                            print(
-                                                'natinality Type Data: $nationalityList');
-                                            if (nationalityList.isEmpty) {
-                                              selectednationality = '';
-                                            } else {
-                                              if (!nationalityList.any(
-                                                  (nationality) =>
-                                                      nationality['code']
-                                                          .toString() ==
-                                                      selectednationality)) {
-                                                selectednationality =
-                                                    nationalityList
-                                                        .first['code']
-                                                        .toString();
-                                              }
-                                            }
-
-                                            return DropdownButtonFormField<
-                                                String>(
-                                              value: selectednationality,
-                                              decoration: const InputDecoration(
-                                                contentPadding:
-                                                    EdgeInsets.only(left: 20),
-                                                border: InputBorder.none,
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                labelText: "Nationality",
-                                                fillColor: Colors.white,
-                                                labelStyle: TextStyle(
-                                                    fontSize: 16,
-                                                    fontFamily: 'Poppins',
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.normal),
-                                              ),
-                                              dropdownColor: Colors.white,
-                                              style: TextStyle(
-                                                  fontSize: screenWidth * 0.040,
-                                                  fontFamily: 'Poppins',
-                                                  color: Colors.black87,
-                                                  fontWeight: FontWeight.w500),
-                                              items: nationalityList.map<
-                                                      DropdownMenuItem<String>>(
-                                                  (nationality) {
-                                                return DropdownMenuItem<String>(
-                                                  value: nationality['code']
-                                                      .toString(),
-                                                  child: Text(
-                                                    nationality['label_eng']
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize:
-                                                            screenWidth * 0.03),
-                                                  ),
-                                                );
-                                              }).toList(),
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  selectednationality = value;
-                                                });
-                                              },
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Please select your Nationality.';
+                                          return nationalityAsyncValue.when(
+                                            data: (nationalityList) {
+                                              print(
+                                                  'natinality Type Data: $nationalityList');
+                                              if (nationalityList.isEmpty) {
+                                                selectednationality = '';
+                                              } else {
+                                                if (!nationalityList.any(
+                                                    (nationality) =>
+                                                        nationality['code']
+                                                            .toString() ==
+                                                        selectednationality)) {
+                                                  selectednationality =
+                                                      nationalityList
+                                                          .first['code']
+                                                          .toString();
                                                 }
-                                                return null;
-                                              },
-                                            );
-                                          },
-                                          loading: () {
-                                            return const CircularProgressIndicator();
-                                          },
-                                          error: (error, stack) {
-                                            return Text(
-                                                'Error loading Natinality data: $error');
-                                          },
-                                        );
-                                      },
+                                              }
+
+                                              return DropdownButtonFormField<
+                                                  String>(
+                                                value: selectednationality,
+                                                decoration:
+                                                    const InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.only(left: 20),
+                                                  border: InputBorder.none,
+                                                  enabledBorder:
+                                                      InputBorder.none,
+                                                  focusedBorder:
+                                                      InputBorder.none,
+                                                  labelText: "Nationality",
+                                                  fillColor: Colors.white,
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                                dropdownColor: Colors.white,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        screenWidth * 0.040,
+                                                    fontFamily: 'Poppins',
+                                                    color: Colors.black87,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                                items: nationalityList.map<
+                                                    DropdownMenuItem<
+                                                        String>>((nationality) {
+                                                  return DropdownMenuItem<
+                                                      String>(
+                                                    value: nationality['code']
+                                                        .toString(),
+                                                    child: Text(
+                                                      nationality['label_eng']
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 12),
+                                                    ),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    selectednationality = value;
+                                                  });
+                                                },
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Please select your Nationality.';
+                                                  }
+                                                  return null;
+                                                },
+                                              );
+                                            },
+                                            loading: () {
+                                              return const CircularProgressIndicator();
+                                            },
+                                            error: (error, stack) {
+                                              return Text(
+                                                  'Error loading Natinality data: $error');
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -1829,81 +1864,86 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           height: 60,
-                          child: Consumer(
-                            builder: (context, ref, child) {
-                              final countryAsyncValue =
-                                  ref.watch(countryProvider);
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Consumer(
+                              builder: (context, ref, child) {
+                                final countryAsyncValue =
+                                    ref.watch(countryProvider);
 
-                              return countryAsyncValue.when(
-                                data: (countryList) {
-                                  // print('country Data: $countryList');
-                                  if (countryList.isEmpty) {
-                                    selectedCountry = '';
-                                  } else {
-                                    if (!countryList.any((title) =>
-                                        title['code_ISO'].toString() ==
-                                        selectedCountry)) {
-                                      selectedCountry = countryList
-                                          .first['code_ISO']
-                                          .toString();
-                                    }
-                                  }
-
-                                  return DropdownButtonFormField<String>(
-                                    value: selectedCountry,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.only(left: 20),
-                                      border: InputBorder.none,
-                                      enabledBorder: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                      labelText: "Country",
-                                      fillColor: Colors.white,
-                                      labelStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                    dropdownColor: Colors.white,
-                                    style: TextStyle(
-                                        fontSize: screenWidth * 0.040,
-                                        fontFamily: 'Poppins',
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500),
-                                    items: countryList
-                                        .map<DropdownMenuItem<String>>((title) {
-                                      return DropdownMenuItem<String>(
-                                        value: title['code_ISO'].toString(),
-                                        child: Text(
-                                          title['label_eng'].toString(),
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: screenWidth * 0.03),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        selectedCountry = value;
-                                      });
-                                    },
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please select a Country.';
+                                return countryAsyncValue.when(
+                                  data: (countryList) {
+                                    // print('country Data: $countryList');
+                                    if (countryList.isEmpty) {
+                                      selectedCountry = '';
+                                    } else {
+                                      if (!countryList.any((title) =>
+                                          title['code_ISO'].toString() ==
+                                          selectedCountry)) {
+                                        selectedCountry = countryList
+                                            .first['code_ISO']
+                                            .toString();
                                       }
-                                      return null;
-                                    },
-                                  );
-                                },
-                                loading: () {
-                                  return const CircularProgressIndicator();
-                                },
-                                error: (error, stack) {
-                                  return Text(
-                                      'Error loading country data: $error');
-                                },
-                              );
-                            },
+                                    }
+
+                                    return DropdownButtonFormField<String>(
+                                      value: selectedCountry,
+                                      decoration: const InputDecoration(
+                                        contentPadding:
+                                            EdgeInsets.only(left: 20),
+                                        border: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        labelText: "Country",
+                                        fillColor: Colors.white,
+                                        labelStyle: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      dropdownColor: Colors.white,
+                                      style: TextStyle(
+                                          fontSize: screenWidth * 0.040,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.w500),
+                                      items: countryList
+                                          .map<DropdownMenuItem<String>>(
+                                              (title) {
+                                        return DropdownMenuItem<String>(
+                                          value: title['code_ISO'].toString(),
+                                          child: Text(
+                                            title['label_eng'].toString(),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: screenWidth * 0.03),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedCountry = value;
+                                        });
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please select a Country.';
+                                        }
+                                        return null;
+                                      },
+                                    );
+                                  },
+                                  loading: () {
+                                    return const CircularProgressIndicator();
+                                  },
+                                  error: (error, stack) {
+                                    return Text(
+                                        'Error loading country data: $error');
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -1992,13 +2032,7 @@ class _RegisterStageWidgetState extends ConsumerState<RegisterStageWidget> {
                                   double.infinity,
                                   50,
                                 )),
-                            onPressed: () {
-                              if (userKey.currentState!.validate()) {
-                                stageOneUserUpdate();
-                              } else {
-                                _showErrorDialog('Please fill requierd fields');
-                              }
-                            },
+                            onPressed: stageOneUserUpdate,
                             child: const Text(
                               'Next',
                               style: TextStyle(

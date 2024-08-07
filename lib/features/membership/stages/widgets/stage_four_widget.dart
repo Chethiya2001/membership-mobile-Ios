@@ -47,10 +47,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   final log = Logger();
   bool showReplyForm = false;
   String? displayComment;
-  String? globalAmount;
+  //String? globalAmount;
   String? globalEnvID;
   bool _isPaymentInProgress = false;
   static String? globalImageUrl;
+
+  int total = 0;
 
   Map<String, dynamic>? paymentIntent;
 
@@ -74,7 +76,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
             merchantDisplayName: '$globalEnvID',
             googlePay: gpay,
             customerId: globalEnvID,
-            primaryButtonLabel: 'EUR $globalAmount',
+            primaryButtonLabel: 'EUR $total',
           ),
         );
         await displayPaymentSheet();
@@ -91,9 +93,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   Future<void> displayPaymentSheet() async {
     try {
       await Stripe.instance.presentPaymentSheet();
-      // Navigate to home screen upon successful payment completion
-
+      
       _successMsg('Payment Done.');
+
     } catch (e) {
       print('Failed');
     }
@@ -137,7 +139,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   Future<Map<String, dynamic>> createPaymentIntent() async {
     try {
       Map<String, dynamic> body = {
-        'amount': globalAmount ?? '1000', // Example amount
+        'amount': total.toString(),
         'currency': 'eur',
       };
 
@@ -274,10 +276,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
           String envid = invoiceData['invoice_id'].toString();
 
           // Set the amount to a global variable
-          globalAmount = amountString;
+          total = amountString as int;
           globalEnvID = envid;
 
-          print('Amount: $globalAmount, id = $globalEnvID');
+          print('Amount: $total, id = $globalEnvID');
         } else {
           print("Response does not contain amount.");
           return false;
@@ -582,6 +584,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         }
       }
     }
+    int totalAmount = loadDueAmount! + loadDiscountAmount!;
+    // print("-----------------------------");
+    // print("Total Amount: $totalAmount");
+    // print("-----------------------------");
+    setState(() {
+      total = totalAmount;
+    });
+    print(total);
 
     return Scaffold(
       backgroundColor: newKBgColor,
@@ -1155,7 +1165,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       Padding(
                         padding: const EdgeInsets.all(22.0),
                         child: Text(
-                          'EUR ${((loadDueAmount ?? 0) - (loadDiscountAmount ?? 0)).toStringAsFixed(2)}',
+                          'EUR $totalAmount',
                           style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
@@ -1305,8 +1315,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 )),
             Positioned(
               bottom: 80,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: SizedBox(
                 width: 300,
                 height: 50,

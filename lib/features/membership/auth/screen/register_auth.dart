@@ -674,102 +674,112 @@ class _RegisterAuthScreenState extends ConsumerState<RegisterAuthScreen> {
                                   color: Colors.white.withOpacity(0.3),
                                   borderRadius: BorderRadius.circular(30),
                                 ),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.white,
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 50,
+                                        height: 50,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
+                                        ),
+                                        child: Icon(
+                                          Icons.flag_circle_sharp,
+                                          color: Colors.black.withOpacity(0.3),
+                                        ),
                                       ),
-                                      child: Icon(Icons.flag_circle_sharp,
-                                          color: Colors.black.withOpacity(0.3)),
-                                    ),
-                                    Expanded(
-                                      child: Consumer(
-                                        builder: (context, ref, child) {
-                                          final countriesAsyncValue =
-                                              ref.watch(countryProvider);
+                                      Expanded(
+                                        child: Consumer(
+                                          builder: (context, ref, child) {
+                                            final countriesAsyncValue =
+                                                ref.watch(countryProvider);
 
-                                          return countriesAsyncValue.when(
-                                            data: (countryList) {
-                                              print(
-                                                  'Country Data: $countryList');
+                                            return countriesAsyncValue.when(
+                                              data: (countryList) {
+                                                print(
+                                                    'Country Data: $countryList');
 
-                                              return DropdownButtonFormField<
-                                                  String>(
-                                                value: selectedCountry,
-                                                alignment: Alignment.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  label: Center(
-                                                      child: Text("Country")),
-                                                  labelStyle: TextStyle(
+                                                return DropdownButtonFormField<
+                                                    String>(
+                                                  value: selectedCountry,
+                                                  alignment: Alignment.center,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    label: Center(
+                                                        child: Text("Country")),
+                                                    labelStyle: TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 16),
-                                                  iconColor: maingbg,
-                                                  contentPadding:
-                                                      EdgeInsets.fromLTRB(
-                                                          -40, 0, 10, 0),
-                                                  border: InputBorder.none,
-                                                  enabledBorder:
-                                                      InputBorder.none,
-                                                  focusedBorder:
-                                                      InputBorder.none,
-                                                ),
-                                                dropdownColor: Colors.black,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                                items: countryList.map<
-                                                    DropdownMenuItem<
-                                                        String>>((country) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: country['code_ISO']
-                                                        .toString(),
-                                                    child: Center(
-                                                      child: Text(
-                                                        country['label_eng']
-                                                            .toString(),
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                      ),
+                                                      fontSize: 16,
                                                     ),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    selectedCountry = value;
-                                                  });
-                                                },
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'Please select a country.';
-                                                  }
-                                                  return null;
-                                                },
-                                              );
-                                            },
-                                            loading: () {
-                                              return const CircularProgressIndicator();
-                                            },
-                                            error: (error, stack) {
-                                              return Text(
-                                                  'Error loading country data: $error');
-                                            },
-                                          );
-                                        },
+                                                    iconColor: Colors.white,
+                                                    contentPadding:
+                                                        EdgeInsets.fromLTRB(
+                                                            -40, 0, 10, 0),
+                                                    border: InputBorder.none,
+                                                    enabledBorder:
+                                                        InputBorder.none,
+                                                    focusedBorder:
+                                                        InputBorder.none,
+                                                  ),
+                                                  dropdownColor: Colors.black,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                  iconEnabledColor:
+                                                      Colors.white,
+                                                  iconDisabledColor:
+                                                      Colors.white,
+                                                  items: countryList.map<
+                                                      DropdownMenuItem<
+                                                          String>>((country) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: country['code_ISO']
+                                                          .toString(),
+                                                      child: Center(
+                                                        child: Text(
+                                                          country['label_eng']
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      selectedCountry = value;
+                                                    });
+                                                  },
+                                                  validator: (value) {
+                                                    if (value == null ||
+                                                        value.isEmpty) {
+                                                      return 'Please select a country.';
+                                                    }
+                                                    return null;
+                                                  },
+                                                );
+                                              },
+                                              loading: () {
+                                                return const CircularProgressIndicator();
+                                              },
+                                              error: (error, stack) {
+                                                return Text(
+                                                    'Error loading country data: $error');
+                                              },
+                                            );
+                                          },
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                               const SizedBox(

@@ -450,7 +450,7 @@ class _MembershipDetailsWidgetState extends State<MembershipDetailsWidget> {
                         const Row(
                           children: [
                             Padding(
-                              padding: EdgeInsets.fromLTRB(8, 16, 0, 0),
+                              padding: EdgeInsets.fromLTRB(18, 16, 8, 8),
                               child: Text(
                                 "Stage 03",
                                 style: TextStyle(
@@ -474,9 +474,9 @@ class _MembershipDetailsWidgetState extends State<MembershipDetailsWidget> {
             ),
 
             Positioned(
-              top: 220,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              top: screenHeight * 0.18,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: Container(
                 height: 300,
                 decoration: BoxDecoration(
@@ -709,9 +709,9 @@ class _MembershipDetailsWidgetState extends State<MembershipDetailsWidget> {
             ),
 
             Positioned(
-              top: 550,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              top: screenHeight * 0.57,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: Column(
                 children: [
                   const Row(
@@ -791,9 +791,9 @@ class _MembershipDetailsWidgetState extends State<MembershipDetailsWidget> {
             ),
             //Working Groups
             Positioned(
-              top: 940,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              top: screenHeight * 1.0,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: Column(
                 children: [
                   const Row(

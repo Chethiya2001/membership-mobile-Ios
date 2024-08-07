@@ -91,37 +91,12 @@ class _ListDrawerState extends State<ListDrawer> {
   //get election list
   Future<bool> getElectionData() async {
     const String baseUrl = ApiConstantsElection.baseUrl;
-    String apiEndpoint = '$baseUrl/get-election?orgId=$globalOrgId';
+    String apiEndpoint = '$baseUrl/get-election?orgId=1';
 
     final token = await TokenManager.getToken();
 
     if (token == null) {
       print("User not authenticated. Please log in.");
-      return false;
-    }
-    if (globalOrgId == null) {
-      print("Organization ID is null. Please set an organization ID.");
-      if (mounted) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('Error'),
-              content: const Text(
-                  'Organization ID Found. Please get an organization ID.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-
       return false;
     }
 
@@ -441,17 +416,30 @@ class _ListDrawerState extends State<ListDrawer> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 0,
                         ),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(8, 16, 0, 0),
-                          child: Text(
-                            "MY MEMBERSHIP",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "MY MEMBERSHIP",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.home,
+                                color: Colors.white,
+                                size: 50,
+                              )
+                            ],
                           ),
                         ),
                       ],

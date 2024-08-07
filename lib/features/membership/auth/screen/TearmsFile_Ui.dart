@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_app/constant/colors/main_colors.dart';
 import 'package:mobile_app/features/membership/tearms&condition/providers/tearms_provider.dart';
 
 class TearmsFile extends ConsumerStatefulWidget {
@@ -13,14 +14,24 @@ class _TearmsFileState extends ConsumerState<TearmsFile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: newKMainColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        titleSpacing: 20,
+        backgroundColor: newKMainColor,
+        title: Text(
+          "Terms & Condition",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Adamina',
+          ),
+        ),
         elevation: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -30,17 +41,6 @@ class _TearmsFileState extends ConsumerState<TearmsFile> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Center(
-              child: Text(
-                "Terms & Condition",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Adamina',
-                ),
-              ),
-            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.7,
               child: Consumer(
@@ -56,39 +56,36 @@ class _TearmsFileState extends ConsumerState<TearmsFile> {
                         itemBuilder: (context, index) {
                           final faq = faqs[index];
 
-                          return Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 8.0,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              boxShadow: [
-                                const BoxShadow(
-                                  color: Colors.white,
-                                  spreadRadius: 1,
-                                  blurRadius: 4,
-                                  offset: const Offset(0, 2),
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 8.0,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                color: Colors.white,
+                              ),
+                              child: ExpansionTile(
+                                title: Text(
+                                  faq['title'],
+                                  style: const TextStyle(color: Colors.black),
                                 ),
-                              ],
-                            ),
-                            child: ExpansionTile(
-                              title: Text(
-                                faq['title'],
-                                style: const TextStyle(color: Colors.black),
-                              ),
-                              subtitle: Text(
-                                faq['sub_title'],
-                                style: const TextStyle(color: Colors.black),
-                              ),
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Text(
-                                    faq['content'],
-                                    style: const TextStyle(color: Colors.black),
+                                subtitle: Text(
+                                  faq['sub_title'],
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      faq['content'],
+                                      style:
+                                          const TextStyle(color: Colors.black),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         },

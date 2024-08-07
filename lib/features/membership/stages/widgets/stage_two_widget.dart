@@ -552,9 +552,9 @@ class _MemebrshipStatageWidgetState
                         const Row(
                           children: [
                             Padding(
-                              padding: EdgeInsets.fromLTRB(8, 16, 0, 0),
+                              padding: EdgeInsets.fromLTRB(18, 16, 8, 8),
                               child: Text(
-                                "Stage 02",
+                                "Membership Stage",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,
@@ -576,9 +576,9 @@ class _MemebrshipStatageWidgetState
             ),
 
             Positioned(
-              top: 220,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              top: screenHeight * 0.18,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: Container(
                 height: 300,
                 width: screenWidth * 0.9,
@@ -693,9 +693,9 @@ class _MemebrshipStatageWidgetState
             ),
             //Addons
             Positioned(
-              top: screenHeight * 0.60,
-              left: (screenWidth - screenWidth * 0.9) / 2,
-              right: (screenWidth - screenWidth * 0.9) / 2,
+              top: screenHeight * 0.57,
+              left: (screenWidth - screenWidth * 0.92) / 2,
+              right: (screenWidth - screenWidth * 0.92) / 2,
               child: Column(
                 children: [
                   const Row(
@@ -850,9 +850,9 @@ class _MemebrshipStatageWidgetState
 
             //Billing
             Positioned(
-                top: screenHeight * 0.85,
-                left: (screenWidth - screenWidth * 0.9) / 2,
-                right: (screenWidth - screenWidth * 0.9) / 2,
+                top: screenHeight * 0.80,
+                left: (screenWidth - screenWidth * 0.92) / 2,
+                right: (screenWidth - screenWidth * 0.92) / 2,
                 child: Column(
                   children: [
                     const Row(
@@ -1593,7 +1593,7 @@ class _MemebrshipStatageWidgetState
 
             //Curcles Blue
             Positioned(
-              top: 358,
+              top: screenHeight * 0.336,
               left: 5,
               child: Container(
                 width: 30,
@@ -1605,7 +1605,7 @@ class _MemebrshipStatageWidgetState
               ),
             ),
             Positioned(
-              top: 358,
+              top: screenHeight * 0.336,
               right: 5,
               child: Container(
                 width: 30,
@@ -1618,7 +1618,7 @@ class _MemebrshipStatageWidgetState
             ),
             //Curcles White
             Positioned(
-              top: 972,
+              top: screenHeight * 1.04,
               left: 5,
               child: Container(
                 width: 30,
@@ -1630,7 +1630,7 @@ class _MemebrshipStatageWidgetState
               ),
             ),
             Positioned(
-              top: 972,
+              top: screenHeight * 1.04,
               right: 5,
               child: Container(
                 width: 30,

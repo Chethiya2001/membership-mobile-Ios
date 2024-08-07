@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_app/features/membership/auth/services/login_token_service.dart';
 
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

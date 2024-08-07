@@ -1,9 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/constant/colors/main_colors.dart';
-import 'package:mobile_app/features/membership/auth/services/login_token_service.dart';
 import 'package:mobile_app/features/membership/countact_us/screens/main_contact_us_screen.dart';
 import 'package:mobile_app/features/membership/faqs/screens/main_faqs_screen.dart';
 import 'package:mobile_app/features/membership/home/screen/widgets/details_home_widget.dart';
@@ -11,7 +8,6 @@ import 'package:mobile_app/features/membership/home/screen/widgets/list_drawer.d
 import 'package:mobile_app/features/membership/memebrshipProfile/screens/user_profile_screen.dart';
 import 'package:mobile_app/features/membership/tearms&condition/screens/main_tearms_and_condition_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -195,24 +191,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                         child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          child: CarouselSlider(
-                            items: imageListShow
-                                .map((e) => Center(
-                                      child: Image.asset(
-                                        e,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                                .toList(),
-                            options: CarouselOptions(
-                              aspectRatio: 2.0,
-                              enlargeCenterPage: true,
-                              scrollDirection: Axis.horizontal,
-                              autoPlay: true,
-                            ),
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: imageListShow.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Image.asset(
+                                  imageListShow[index],
+                                  fit: BoxFit.cover,
+                                  width: MediaQuery.of(context).size.width *
+                                      0.8, // adjust the width as needed
+                                ),
+                              );
+                            },
                           ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -292,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-
+          // Positioned to White part of the widget
         ),
       ),
     );

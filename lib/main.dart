@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:mobile_app/features/membership/auth/screen/login_auth.dart';
 import 'package:mobile_app/features/membership/auth/screen/register_auth.dart';
 import 'package:mobile_app/features/membership/blog/blog_main/screens/blog_list_screen.dart';
 import 'package:mobile_app/features/membership/fees&Join/screen/main_fees_screen.dart';
